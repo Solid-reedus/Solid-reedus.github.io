@@ -50,7 +50,7 @@ A job system is a concurrency framework that schedules small units of work (jobs
 The execution model is **cooperative**: when a worker finishes its own work, it helps complete remaining jobs rather than going idle.
 
 > *A metaphor for this cooperative execution model:*  
-> ![apes together strong - cooperative threads metaphor](../media/apes_together_strong.jpg)
+> ![apes together strong - cooperative threads metaphor](/media/apes_together_strong.jpg)
 
 While cooperation enables impressive gains, it also introduces complexity in synchronization, correctness, and debugging—topics that strongly influenced the system’s design.
 
@@ -83,12 +83,12 @@ To validate the system, I built a **Total War–style simulation** with thousand
 
 The job system is designed to keep all CPU cores busy without requiring the programmer to manually manage threads. Work is broken into small **jobs**, which are dynamically scheduled across a fixed pool of worker threads.
 
-![thread pool](../media/thread_pools.png)
+![thread pool](/media/thread_pools.png)
 <!-- Source: https://jenkov.com/tutorials/java-concurrency/thread-pools.html -->
 
 Each worker thread owns its **own job queue**, reducing contention compared to a single global queue. Workers primarily consume jobs from their local queue, which keeps common-case execution fast.
 
-![work stealing](../media/work_stealing_diagram.png)
+![work stealing](/media/work_stealing_diagram.png)
 <!-- Source: https://actor-framework.readthedocs.io/en/stable/core/Scheduler.html -->
 
 When a worker runs out of work, it attempts to **steal jobs** from another worker’s queue. This balances uneven workloads and prevents CPU cores from sitting idle.
@@ -115,11 +115,13 @@ This design avoids global locks and enables efficient dependency resolution.
 Jobs are created, linked, and submitted explicitly:
 
 ```cpp
-auto job1 = Engine.JobSystem().CreateJob([]() {
+auto job1 = Engine.JobSystem().CreateJob([]() 
+{
     DoWorkA();
 });
 
-auto job2 = Engine.JobSystem().CreateJob([]() {
+auto job2 = Engine.JobSystem().CreateJob([]() 
+{
     DoWorkB();
 });
 
