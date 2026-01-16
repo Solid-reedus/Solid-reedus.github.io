@@ -318,7 +318,7 @@ In this video, the simulation runs **4 formations**, each with **8 × 40 units**
 
 
 Key observations:
-- `UpdateUnitsParallel` takes **~1.6 ms on average**
+- UpdateUnitsParallel takes **~1.6 ms on average**
 - The simulation runs at around **110 FPS**
 - When units enter combat, FPS increases to **~130 FPS**
 
@@ -338,8 +338,8 @@ To directly compare execution models, I recorded a side-by-side profiler compari
 
 
 In the profiler timeline:
-- **Blue bars** represent the single-threaded version
-- **Orange bars** represent the job system version
+- **Blue timeline graph** represent the single-threaded version
+- **Orange timeline graph** represent the job system version
 
 The difference is immediately visible:
 - The parallel version is significantly faster
@@ -361,8 +361,8 @@ To make the performance difference easier to read, the same test was recorded ag
 
 
 This view makes it clear that:
-- `UpdateUnits` (sequential) takes roughly **25 ms**
-- `UpdateUnitsParallel` takes around **1.5 ms**
+- UpdateUnits (sequential) takes roughly **25 ms**
+- UpdateUnitsParallel takes around **1.5 ms**
 - Frame-time variance is dramatically reduced in the parallel version
 
 This highlights an important result: the job system not only improves raw performance, but also produces **more consistent frame times**, which is critical for real-time applications.
@@ -379,7 +379,7 @@ Finally, the system was tested under a much heavier workload.
 
 In this scenario:
 - **14 formations** are active instead of 4
-- `UpdateUnitsParallel` takes **~18–20 ms**
+- UpdateUnitsParallel takes **~18–20 ms**
 - The simulation runs at around **35 FPS**
 - FPS increases to **~40 FPS during combat**
 
@@ -451,16 +451,16 @@ Gregory, J. (2018). *Game Engine Architecture* (3rd ed.). CRC Press.
 Hager, G., & Wellein, G. (2010). *Introduction to High Performance Computing for Scientists and Engineers*. CRC Press.
 
 Mösch, R. (n.d.). *Building a Job System*.  
-https://www.rismosch.com/article?id=building-a-job-system
+[https://www.rismosch.com/article?id=building-a-job-system](https://www.rismosch.com/article?id=building-a-job-system)
 
 Wicked Engine. (2018, November 18). *Simple Job System Using Standard C++*.  
-https://wickedengine.net/2018/11/simple-job-system-using-standard-c/
+[https://wickedengine.net/2018/11/simple-job-system-using-standard-c/](https://wickedengine.net/2018/11/simple-job-system-using-standard-c/)
 
 Vienna GameDev. (n.d.). *Vienna Game Job System*.  
-https://github.com/ViennaGameDev/ViennaGameJobSystem
+[https://github.com/ViennaGameDev/ViennaGameJobSystem](https://github.com/ViennaGameDev/ViennaGameJobSystem)
 
 Skypjack. (n.d.). *EnTT Documentation*.  
-https://github.com/skypjack/entt
+[https://github.com/skypjack/entt](https://github.com/skypjack/entt)
 
 <br>
 
