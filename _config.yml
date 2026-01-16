@@ -1,6 +1,5 @@
 theme: jekyll-theme-midnight
-
-title: title
-description: lorem ipsun
+title: My Dev Blog
+description: Engine programming + performance notes
 show_downloads: false
 future: true

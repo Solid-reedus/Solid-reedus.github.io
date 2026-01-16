@@ -1,13 +1,13 @@
 ---
+layout: post
 title: "Building a Fast Job System with ECS Integration"
 date: 2026-01-16
 description: "How I designed and implemented a multithreaded job system that scales with large workloads and integrates cleanly with ECS."
 ---
 
 
-# Building a Fast Job System with ECS Integration
 
-## Introduction
+# Introduction
 
 Over the last two decades, game engines have evolved from largely single-threaded designs into heavily multithreaded systems that leverage modern multi-core CPUs. While this shift enables significantly higher performance, it also introduces complexity in scheduling, synchronization, and debugging.
 
@@ -19,13 +19,11 @@ In this blog post, I will cover:
 - the architecture of a job system and the bits and pieces its made up of
 - the gains and result of a job system had on my engine.
 
-<br>
-
 ---
 
-## Context & Background
+<br>
 
-### Why Is This Problem Important?
+## Why Is This Problem Important?
 
 Over the past decade, CPU clock speeds have largely stopped increasing, while the number of available cores on consumer hardware has steadily grown. This means that modern performance gains no longer come from faster single-threaded code, but from using **multiple cores effectively**.
 
@@ -42,10 +40,10 @@ This blog is written for fellow students who are interested in:
 
 The goal is not to present a production-ready solution, but to show how these ideas come together in practice, what problems arise, and how they can be approached.
 
+---
 
 <br>
 
----
 
 ## What Is a Job System?
 
@@ -60,10 +58,10 @@ This approach can produce large performance gains, especially for workloads that
 
 Because of this, a major design goal of my job system was **explicitness**. Parallel work, dependencies, and synchronization points should be visible in the code, not hidden behind abstractions. This makes the system slightly more demanding to use, but much easier to reason about and debug.
 
+---
 
 <br>
 
----
 
 ## What I Built
 
@@ -80,10 +78,9 @@ To validate the design, I built a Total War–style simulation with thousands of
 
 This kind of workload is challenging for many schedulers and makes a good stress test. It exposes problems in load balancing, scheduling fairness, synchronization overhead, and frame-time stability. Rather than optimizing for an ideal case, the system was tested under conditions that resemble real gameplay scenarios.
 
+---
 
 <br>
-
----
 
 ### Architecture Overview
 
@@ -119,6 +116,7 @@ To coordinate execution across workers, the system tracks outstanding work using
 
 This approach makes synchronization visible and predictable. Instead of hidden barriers or implicit waits, the programmer can clearly see where parallel execution ends, which makes both performance behavior and debugging easier to reason about.
 
+<br>
 
 ---
 
@@ -287,8 +285,10 @@ In practice, this approach trades some ease of use for:
 - Fewer context switches
 - More consistent frame times under load
 
-
 ---
+
+<br>
+
 
 ## Results & Analysis
 
@@ -331,8 +331,9 @@ Finally, the system intentionally avoids heavy abstraction. While higher-level a
 
 These choices make the system less forgiving, but they align well with the goal of understanding and controlling performance characteristics.
 
-
 ---
+
+<br>
 
 ## Conclusion & Reflection
 
@@ -379,6 +380,8 @@ With more time, I would explore:
 * Code repository: *(link here)*
 * Demo videos: *(link here)*
 -->
+
+<br>
 
 ---
 
