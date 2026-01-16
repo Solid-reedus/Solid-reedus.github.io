@@ -192,7 +192,7 @@ While this places more responsibility on the programmer, it avoids hidden synchr
 
 ---
 
-### ECS Integration with `ParallelFor`
+### ECS Integration with ParallelFor
 
 #### ECS in a Nutshell
 
@@ -263,6 +263,8 @@ This design choice was intentional. By keeping the API close to standard ECS ite
 
 ---
 
+<br>
+
 ### Synchronization Strategy
 
 Synchronization is one of the hardest parts of any multithreaded system. Excessive locking can destroy performance, while insufficient synchronization leads to subtle and difficult-to-debug race conditions.
@@ -318,6 +320,8 @@ These observations reinforced a recurring theme: in multithreaded systems, *more
 
 ---
 
+<br>
+
 ### Trade-offs
 
 Designing a job system involves a series of trade-offs, and this project is no exception.
@@ -337,25 +341,19 @@ These choices make the system less forgiving, but they align well with the goal 
 ## Conclusion & Reflection
 
 ### What I Learned
+This project significantly deepened my understanding of multithreaded systems and the tools used to build them. Beyond simply using threads and atomics, I gained a much clearer sense of how asynchronous code behaves at runtime, how multiple threads interact, and what is required to make them cooperate safely.
 
-This project deepened my understanding of:
+Working on a job system also pushed me to think more critically about trade-offs. Decisions around synchronization, scheduling, and task granularity all come with costs, affecting performance, complexity, and usability in different ways. Understanding these consequences became just as important as making the system function correctly.
 
-* Job scheduling and synchronization
-* Data-oriented design
-* Profiling-driven optimization
-
-One key insight was that **larger workloads often perform better**, as workers remain busy without frequent synchronization.
-
+One key insight was that larger workloads often perform better. When enough work is available, worker threads stay busy and synchronization overhead is amortized, whereas very small workloads tend to suffer from idle time and overhead.
 ---
 
 ### Future Work
+With more time, there are several directions in which this job system could be extended.
 
-With more time, I would explore:
+Introducing priority-based scheduling would allow time-critical jobs to run earlier, which is important for frame-sensitive engine systems. More advanced debug and profiling visualization, such as job timelines or queue state views, would also make the system easier to reason about and debug.
 
-* Priority-based job scheduling
-* More advanced debug visualization
-* Lock-free allocators for job data
-* Data parallelism outside ECS contexts
+The system could further benefit from custom or lock-free allocators for job data, reducing allocation overhead under heavy workloads. Finally, expanding data-parallel execution beyond ECS contexts would make the job system more broadly applicable to engine tasks that operate on large datasets without a component-based structure.
 
 ---
 
