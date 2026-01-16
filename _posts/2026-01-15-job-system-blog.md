@@ -360,24 +360,21 @@ The system could further benefit from custom or lock-free allocators for job dat
 
 ### Further Reading
 
-[this is still imcomplete]
+Gregory, J. (2018). *Game Engine Architecture* (3rd ed.). CRC Press.
 
-* *Game Engine Architecture* — Jason Gregory
-* *Parallel and High Performance Computing* — Hager & Wellein
-* EnTT documentation
-* GDC talks on job systems and engine architecture
+Hager, G., & Wellein, G. (2010). *Introduction to High Performance Computing for Scientists and Engineers*. CRC Press.
 
+Mösch, R. (n.d.). *Building a Job System*.  
+https://www.rismosch.com/article?id=building-a-job-system
 
+Wicked Engine. (2018, November 18). *Simple Job System Using Standard C++*.  
+https://wickedengine.net/2018/11/simple-job-system-using-standard-c/
 
----
+Vienna GameDev. (n.d.). *Vienna Game Job System*.  
+https://github.com/ViennaGameDev/ViennaGameJobSystem
 
-### Links
-[still need to add them]
-
-<!--
-* Code repository: *(link here)*
-* Demo videos: *(link here)*
--->
+Skypjack. (n.d.). *EnTT Documentation*.  
+https://github.com/skypjack/entt
 
 <br>
 
